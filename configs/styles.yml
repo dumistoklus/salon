@@ -1,0 +1,39 @@
+#common
+common:
+  file: /style/common.css
+  not_include: 1
+content:
+  file: /style/content.css
+index:
+  file: /style/index.css
+# used not from this file
+ie:
+  file: /style/ie.css
+  not_include: 1
+lightbox:
+  file: /style/jquery.lightbox-0.5.css
+
+#modules
+catalog:
+  file: /style/modules/catalog.css
+goods:
+  file: /style/modules/goods.css
+
+#administration common
+administration:
+  file: /style/administration/style.css
+
+# administration modules
+rules:
+  file: /style/administration/rules.css
+users:
+  file: /style/administration/users.css
+jquery-ui-admin:
+  file: /style/administration/jquery-ui-1.8.16.custom.css
+  not_include: 1
+admin_user:
+  file: /style/administration/admin_user.css
+catalog_list:
+  file: /style/administration/catalog_list.css
+goods_editor:
+  file: /style/administration/goods_editor.css

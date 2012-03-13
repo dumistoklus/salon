@@ -1,0 +1,55 @@
+{% if data.hleb %}
+    <div id="hleb">
+    {% for hleb in data.hleb %}
+        {% if not loop.last %}
+            <a href="{{ ways.catalog( hleb.cat_id ) }}">{{ hleb.name }}</a> &rarr;
+        {% else %}
+            {{ hleb.name }}
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endif %}
+{% if data.get_main_menu[data.mainCat] %}
+    <div id="cats">
+        {% for cat in data.getCatalog[data.mainCat] %}
+        <div class="cat">
+            <div class="cat-header"><a href="{{ ways.catalog( cat.cat_id ) }}">{{ cat.name }}</a></div>
+            <a href="{{ ways.catalog( cat.cat_id ) }}" class="cat-link">
+                {% if cat.image_id %}
+                <img src="{{ data.image_path( cat.image_id, cat.ext ) }}" alt="" class="photo-image" />
+                {% else %}
+                <span class="no-photo">Нет фото</span>
+                {% endif %}
+            </a>
+        </div>
+        {% endfor %}
+        <div style="clear: both;"></div>
+    </div>
+{% endif %}
+{% if data.goods %}
+<table id="goods">
+    <tr>
+    {% for goods in data.goods %}
+    <td class="good">
+        <a href="{{ ways.goods( goods.id ) }}" class="cat-link">
+            {% if goods.image_id %}
+            <img src="{{ data.image_path( goods.image_id, goods.ext ) }}" alt="" />
+            {% else %}
+            <span class="no-photo">Нет фото</span>
+            {% endif %}
+        </a>
+        <div class="cat-header"><a href="{{ ways.goods( goods.id ) }}">{{ goods.name }}</a></div>
+        {% if goods.price > 0 %}
+        <div class="goods-price">{{ data.beautiful_sum( goods.price )|raw }} рублей</div>
+        {% endif %}
+    </td>
+    {% if loop.index % 3 == 0 %}
+        </tr><tr>
+    {% endif %}
+    {% endfor %}
+    </tr>
+</table>
+{% endif %}
+{% if not data.get_main_menu[data.mainCat] and not data.goods %}
+    <div style="padding-top: 20px;">Страница находтся в разработке</div>
+{% endif %}

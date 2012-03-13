@@ -1,0 +1,51 @@
+{% if data.paginator %}
+{{ spaceless }}
+<div class="pgs">
+	<div class="pgs-warp">
+		{% if data.paginator.currentpage > 1 %}
+			<a href="{{ ways.add( 'p', data.paginator.currentpage - 1 ) }}" class="pgs-link">
+				<b class="pgs-arrow">&larr;</b>{{ lang.common.paginator['PREVIOUS_PAGE'] }}
+			</a>
+		{% else %}
+			<b class="pgs-arrow">&larr;</b>{{ lang.common.paginator['PREVIOUS_PAGE'] }}
+		{% endif %}
+
+		<span class="pgs-list">
+			{% if data.paginator.start_range > 1 %}
+				<a href="{{ ways.add( 'p', 1 ) }}" class="pgs-link">1</a>
+				{% if data.paginator.start_range == 3 %}
+					<a href="{{ ways.add( 'p', 2 ) }}" class="pgs-link">2</a>
+				{% elseif data.paginator.start_range > 3 %}
+					...
+				{% endif %}
+			{% endif %}
+
+			{% for i in data.paginator.start_range..data.paginator.end_range %}
+				{% if i == data.paginator.currentpage %}
+					<span class="pgs-currentpage">{{ i }}</span>
+				{% else %}
+					 <a href="{{ ways.add( 'p', i ) }}" class="pgs-link">{{ i }}</a>
+				{% endif %}
+			{% endfor %}
+
+			{% if data.paginator.end_range < data.paginator.numpages %}
+				{% if data.paginator.end_range == data.paginator.numpages - 2 %}
+					<a href="{{ ways.add( 'p', data.paginator.numpages - 1 ) }}" class="pgs-link">{{ data.paginator.numpages - 1 }}</a>
+				{% elseif data.paginator.end_range < data.paginator.numpages - 2 %}
+					...
+				{% endif %}
+				<a href="{{ ways.add( 'p', data.paginator.numpages ) }}" class="pgs-link">{{ data.paginator.numpages }}</a>
+			{% endif %}
+		</span>
+
+		{% if data.paginator.currentpage < data.paginator.numpages %}
+			<a href="{{ ways.add( 'p', data.paginator.currentpage + 1 ) }}" class="pgs-link">
+				{{ lang.common.paginator['NEXT_PAGE'] }}<b class="pgs-arrow">&rarr;</b>
+			</a>
+		{% else %}
+			{{ lang.common.paginator['NEXT_PAGE'] }}<b class="pgs-arrow">&rarr;</b>
+		{% endif %}
+	</div>
+</div>
+{{ endspaceless }}
+{% endif %}

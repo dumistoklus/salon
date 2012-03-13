@@ -1,0 +1,26 @@
+.rules-list {
+    margin-bottom: 10px;
+}
+.rules-list-header span, .rules-list-body span {
+    padding: 5px 10px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.rules-list-header {
+    font-size: 14px;
+    border-bottom: 1px solid #999;
+    background-color: #eee
+}
+.rules-list-body {
+    border-bottom: 1px solid #999;
+}
+.rules-list-body:hover {
+    background-color: #ffffef;
+}
+.rules-list-checkbox {
+    width: 25px;
+}
+.rules-list-body label {
+    height: 29px;
+    display: block;
+}

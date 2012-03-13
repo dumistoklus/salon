@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{ data.user.locale }}" lang="{{ data.user.locale }}">
+<head>
+	<!-- META BEGIN -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>
+	{% if data.get_title %}{{ data.get_title|join(' &mdash; ')|raw }} &mdash;{% endif %} {{ lang.common['SITENAME']|raw }}
+	</title>
+	{% if data.get_keywords %}
+	<meta name="keywords" content="{{ data.get_keywords }}" />
+	{% endif %}
+	{% if data.get_description %}
+	<meta name="description" content="{{ data.get_description }}" />
+	{% endif %}
+	<!-- META END -->
+	<!-- STYLES BEGIN -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans|Lobster&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css' />
+	{% for style in styles %}
+	<link rel="stylesheet" type="text/css" media="all" href="{{ style }}" />
+	{% endfor %}
+	<!-- STYLES END -->
+	<!-- SCRIPTS BEGIN -->
+	{% if data.exist_script_text %}
+	<script type="text/javascript">{{ data.script_text|raw }}</script>
+	{% endif %}
+	{% for script in scripts %}
+	<script type="text/javascript" src="{{ script }}"></script>
+	{% endfor %}
+    <script type="text/javascript" src="/js/jquery.color.js"></script>
+	<!-- SCRIPTS END -->
+    {% if not data.debug %}
+    <!-- counters here -->
+    {% endif %}
+</head>
+<body>
+<div id="main">
+    <div id="header"><div id="phone">Звоните нам!<br />8 (962) 559 20 10<div id="email">info@diluso.ru</div></div>
+        <div id="logo">di Luso
+        <div id="podpis">Салон интерьерных решений</div>
+        <div id="search-block"><form action="/" method="get">
+            <input type="text" name="q" value="" id="search-input" /><input type="submit" value="Искать" id="search-button" />
+        </form>
+            {% if data.user.check_this_right('administration') %}
+            <a href="{{ ways.adminpage }}" class="in-admin">{{ lang.common.ADMIN_PAGE|raw }}</a>
+            {% endif %}
+        </div></div>
+    </div>
+    <table id="table">
+        <tr>
+            <td id="side-left"></td>
+            <td id="side-center"></td>
+            <td id="side-right"></td>
+        </tr>
+    </table>
+    <div id="top-menu">
+        <div id="top-menu-inner">
+            <a href="/" class="top-menu-link">Главная</a>
+            <a href="/cat0" class="top-menu-link">Интернет-магазин</a>
+            <a href="/page/39" class="top-menu-link">Доставка и оплата</a>
+            <a href="/page/40" class="top-menu-link">Новости и мероприятия</a>
+            <a href="/page/37" class="top-menu-link">Шоу-рум на Чистопольской</a>
+            <a href="/page/38" class="top-menu-link">Портфолио</a>
+        </div>
+    </div>
+    <div id="content">
+        <table style="min-width: 100%;">
+            <tr>
+                <td id="menu">
+                    {% set cats = data.get_main_menu() %}
+                    {% for cat in cats[0] %}
+                    <a href="{{ ways.catalog( cat.cat_id ) }}" class="menu-link">{{ cat.name }}</a>
+                    {% endfor %}
+                </td>
+                <td id="soder">
+
+
+
+                    {% if data.thisIsMainPage() %}
+                    <div id="mainpage">
+                        <ul id="ramka">
+                            <li><a href="/images/1.jpg"><img src="images/mini1.jpg" alt="" /></a></li>
+                            <li><a href="/images/3.jpg"><img src="images/mini3.jpg" alt="" /></a></li>
+                            <li><a href="/images/4.jpg"><img src="images/mini4.jpg" alt="" /></a></li>
+                            <li><a href="/images/2.jpg"><img src="images/mini2.jpg" alt="" /></a></li>
+                            <li><a href="/images/5.jpg"><img src="/images/mini5.jpg" alt="" /></a></li>
+                            <li><a href="/images/6.jpg"><img src="/images/mini6.jpg" alt="" /></a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+
+
+
+
+
+{% if data.has_errors %}
+<div class="errors-wrapper">
+    {% for error in data.get_errors %}
+    <div class="errors">{{ error }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+{% if data.get_notifications %}
+<div class="notifications-wrapper">
+    {% for notification in data.get_notifications %}
+    <div class="notifications">{{ notification }}</div>
+    {% endfor %}
+</div>
+{% endif %}

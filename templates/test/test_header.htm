@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- META BEGIN -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>
+	{% if data.get_title %}{{ data.get_title }} &mdash;{% endif %} {{ lang.common['SITENAME'] }}
+	</title>
+	{% if data.get_keywords %}
+	<meta name="keywords" content="{{ data.get_keywords }}" />
+	{% endif %}
+	{% if data.get_description %}
+	<meta name="description" content="{{ data.get_description }}" />
+	{% endif %}
+	<!-- META END -->
+	<meta http-equiv="Content-Language" content="{{ data.user.locale }}" />
+	<!-- STYLES BEGIN -->
+	{% for style in styles %}
+	<link rel="stylesheet" type="text/css" media="all" href="{{ style }}" />
+	{% endfor %}
+	<!--[if lte IE 7]>
+	<link rel="stylesheet" type="text/css" media="all" href="/style/ie.css" />
+	<![endif]-->
+	<link rel="shortcut icon" href="/favicon.ico" type='image/x-icon' />
+	<!-- STYLES END -->
+	<!-- SCRIPTS BEGIN -->
+	{% if data.exist_script_text %}
+	{% autoescape false %}
+	<script type="text/javascript">{{ data.script_text }}</script>
+	{% endautoescape %}
+	{% endif %}
+	{% for script in scripts %}
+	<script type="text/javascript" src="{{ script }}"></script>
+	{% endfor %}
+	<!-- SCRIPTS END -->
+</head>
+<body>

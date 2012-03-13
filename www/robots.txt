@@ -1,0 +1,10 @@
+User-agent: dotbot 
+Disallow: /
+
+User-agent: *
+Crawl-delay: 3
+Disallow: /administration/
+Disallow: /ajax.php
+Disallow: /_thumbs/
+Disallow: /js/
+Disallow: /style/

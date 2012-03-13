@@ -1,0 +1,49 @@
+{% import 'administration/ui_elements.htm' as ui %}
+<div class="adm-header">
+	{{ lang.admin.users.HEADER }}
+</div>
+
+<div class="ui-form-block">
+    <form action="{{ ways.thispage }}" method="post">
+        <table class="w100">
+            <tr class="ui-form-line">
+                <td class="ui-form-dd">{{ lang.admin.users.USERNAME }}:</td>
+                <td>
+                    <div class="fr">{{ ui.button( 'add', ways.admin_user_new, lang.admin.users.NEW_USER ) }}</div>
+                    {{ ui.input( 'username', data.query.username ) }}</td>
+            </tr>
+            <tr class="ui-form-line">
+                <td></td>
+                <td>{{ ui.submit( lang.admin.users.SEARCH ) }}</td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% include 'main/elements/paginator_mini.htm' %}
+<table class="w100">
+	<thead class="users-list-header">
+	<tr>
+		<td></td>
+		<td>{{ lang.admin.users.USER_NAME|raw }}</td>
+		<td></td>
+		<td>{{ lang.admin.users.REGISTRATION_DATE|raw }}</td>
+        <td>{{ lang.admin.users.LAST_VISIT|raw }}</td>
+        <td>{{ lang.admin.users.STATUS|raw }}</td>
+		<td></td>
+	</tr>
+	</thead>
+	<tbody class="users-list-body">
+	{% for user in data.users %}
+	<tr>
+		<td>{{ user.id_user }}</td>
+		<td><a href="{{ ways.admin_user( user.id_user ) }}">{{ user.username }}</a></td>
+		<td><a href="{{ ways.admin_user_rules( user.id_user ) }}">{{ lang.admin.users.VIEW_RULES }}</a></td>
+        <td>{% if user.created %}{{ user.created|date('j F Y H:i') }}{% else %}-{% endif %}</td>
+        <td>{% if user.last_visit %}{{ user.last_visit|date('j F Y H:i') }}{% else %}-{% endif %}</td>
+        <td>{% if not user.active %}{{ lang.admin.users.NOT_ACTIVE_OR_BANNED|raw }}{% endif %}</td>
+		<td>{% if user.active %}{{ ui.banbutton( ways.admin_user_to_ban( user.id_user )) }}{% else %}{{ ui.restorebutton( ways.admin_user_to_unban( user.id_user )) }}{% endif %}</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% include 'main/elements/paginator.htm' %}

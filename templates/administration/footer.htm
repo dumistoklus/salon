@@ -1,0 +1,10 @@
+</div>
+<div id="authors">Авторы: Гольдфарб Илья, Фомин Александр, Гумеров Азат<br />2011</div>
+{% include 'main/elements/debugpanel.htm' %}
+{% set box %}
+{% include "main/elements/box.htm" %}
+{% endset %}
+<script type="text/javascript">orgup.templates.box = '{% autoescape false %}{{ box|replace({'"':'\\"','\/': '\\/'}) }}{% endautoescape %}';
+orgup.templates.loader = '<div class="cc"><img src="/style/img/loadermini.gif" /><\/div>';</script>
+</body>
+</html>

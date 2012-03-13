@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{% if data.get_title %}
+	{{ data.get_title }}
+	{% endif %}
+	{{ lang.common['ADMIN_SITENAME'] }}</title>
+	{% if data.get_description %}
+	<meta name="description" content="{{ data.get_description }}" />
+	{% endif %}
+	{% if data.get_keywords %}
+	<meta name="keywords" content="{{ data.get_keywords }}" />
+	{% endif %}
+	{% for style in styles %}
+	<link rel="stylesheet" type="text/css" media="all" href="{{ style }}" />
+	{% endfor %}
+	{% if data.script_text %}
+	<script type="text/javascript">{{ data.script_text|raw }}</script>
+	{% endif %}
+	{% for script in scripts %}
+	<script type="text/javascript" src="{{ script }}"></script>
+	{% endfor %}
+</head>
+<body>
+{% if data.get_errors or data.get_notifications %}
+	<div id="messageframe">
+		<div id="noterr_onstart">
+		{% if data.get_errors %}
+			{% for error in data.get_errors %}
+			<div class="noterr-block noterr-error">{{ error }}</div>
+			{% endfor %}
+		{% endif %}
+		{% if data.get_notifications %}
+			{% for notification in data.get_notifications %}
+			<div class="noterr-block noterr-notification">{{ notification }}</div>
+			{% endfor %}
+		{% endif %}
+		</div>
+	</div>
+{% endif %}
+<div id="header"><a href="/">На сайт</a><a href="{{ ways.logout }}" class="fr">{{ lang.common.LOGOUT }}</a></div>
+<div id="navigation">
+    <a href="{{ ways.adminpage }}" class="returtomainpage">Главная админки</a>
+    {% for nav, menu in data.navigation %}
+    {% set roop = loop %}
+    <div class="menu-zag{% if loop.first %} topmenu{% endif %}">{% if lang.admin.nav[nav] %}{{ lang.admin.nav[nav] }}{% else %}{{ nav }}{% endif %}</div>
+        {% for name, link in menu %}
+            <a href="{{ link }}" class="menu{% if roop.last and loop.last %} bottommenu{% endif %}">{% if lang.admin.nav[name] %}{{ lang.admin.nav[name] }}{% else %}{{ name }}{% endif %}</a>
+        {% endfor %}
+    {% endfor  %}
+</div>
+<div id="content">

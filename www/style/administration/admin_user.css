@@ -1,0 +1,8 @@
+.js #user-change-pass-form {
+    display: none;
+}
+#user-hide-change-pass-form {
+    display: inline-block;
+    margin-left: 40px;
+    padding-top: 5px;
+}

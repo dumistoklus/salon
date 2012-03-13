@@ -1,0 +1,26 @@
+{% import 'administration/ui_elements.htm' as ui %}
+<div class="adm-header">
+	{{ lang.admin.custompages.HEADER }}
+</div>
+{{ ui.button( 'add', ways.admin_new_page, lang.admin.custompages.CREATE_NEW_PAGE ) }}
+{% if data.get_pages %}
+	{% include 'main/elements/paginator_mini.htm' %}
+	<ul class="ui-list">
+		{% for page in data.get_pages %}
+		<li class="cf ui-list-block">
+			<div class="ui-list-id">{{ page.id_page }}</div>
+			<div class="cf">
+				{{ ui.deletebutton( ways.admin_custom_page_delete( page.id_page )) }}
+				<a href="{{ ways.admin_custom_page( page.id_page ) }}" class="link">{{ page.name }}</a><br />
+				{{ page.description }}<br />
+				<a href="{{ ways.custom_page_id( page.id_page ) }}">{{ ways.custom_page_id( page.id_page ) }}</a>
+				<div class="ui-subscription">{{ lang.admin.custompages.CHANGED }}: {% if page.last_edit_time != '0000-00-00 00:00:00' %}{{ page.last_edit_time|date('j F Y H:i') }}{% else %}{{ lang.admin.loanlist.NOT_CHANGED }}{% endif %}</div>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+	{% include 'main/elements/paginator.htm' %}
+{% else %}
+	<br />
+	<div class="ui-warning">{{ lang.admin.custompages['PAGES_NOT_FOUND'] }}</div>
+{% endif %}

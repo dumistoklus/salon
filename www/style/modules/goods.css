@@ -1,0 +1,57 @@
+.photo-image {
+    border: 3px solid #fff;
+    display: inline-block;
+    font-size: 0;
+}
+h2 {
+    padding: 0 0 10px 0;
+    margin: 0;
+    font-weight: normal;
+    font-size: 32px;
+    font-family: Times New Roman, serif;
+    color: orange;
+}
+.item-description {
+    padding-left: 20px;
+    font-size: 18px;
+}
+.price {
+    font-size: 30px;
+}
+.jcarousel-clip {
+    overflow: hidden;
+}
+.order_button {
+    display: inline-block;
+    padding: 9px 30px;
+    font-size: 28px;
+    color: #fff;
+    text-decoration: none;
+    background: #ff943d; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ff943d 0%, #ff7400 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff943d), color-stop(100%,#ff7400)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ff943d 0%,#ff7400 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ff943d 0%,#ff7400 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ff943d 0%,#ff7400 100%); /* IE10+ */
+    background: linear-gradient(top,  #ff943d 0%,#ff7400 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff943d', endColorstr='#ff7400',GradientType=0 ); /* IE6-9 */
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-shadow: 0 -1px #bf8441;
+    margin-top: 10px;
+}
+.order_button:active {
+    position: relative;
+    top: 1px;
+}
+.goods-image {
+    text-align: center;
+    width: 400px;
+}
+#goods-description {
+    padding-top: 20px;
+}
+.discl {
+    padding-top: 20px;
+}

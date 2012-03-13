@@ -1,0 +1,6 @@
+filter:
+  handler: '\Orgup\Expansions\Module\Filter\Handler'
+  expansions:
+    ip: '\Orgup\Expansions\Module\Filter\Ip'
+    server: '\Orgup\Expansions\Module\Filter\Server'
+    registered: '\Orgup\Expansions\Module\Filter\Registered'

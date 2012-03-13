@@ -1,0 +1,85 @@
+{% macro deletebutton( link, classes ) %}
+	<a href="{{ link|default('#') }}" class="ui-button-del {{ classes }}" onclick="return confirm('Удалить?')">X</a>
+{% endmacro -%}
+
+{% macro remove_element( classes ) %}
+	<a href="#" class="ui-button-del {{ classes }}">X</a>
+{% endmacro -%}
+
+{% macro link_as_button( link, text, classes, id ) %}
+	<a href="{{ link }}" class="ui-link-as-button {{ classes }}"{% if id %} id="{{ id }}"{% endif %}>{{ text }}</a>
+{% endmacro -%}
+
+{% macro button( type, link, text, classes, id ) %}
+	<a href="{{ link }}" class="ui-link-as-button {{ classes|raw }}"{% if id %} id="{{ id }}"{% endif %}><i class="ui-icon-{{ type|raw }}">&nbsp;</i>{{ text }}</a>
+{% endmacro -%}
+
+{% macro big_input( name, value, class, id ) %}
+<input type="text" name="{{ name }}" value="{{ value }}" class="ui-biginput {{ class }}"{% if id %} id="{{ id }}"{% endif %} />
+{% endmacro -%}
+
+{% macro input( name, value, class, id ) -%}
+<input type="text" name="{{ name }}" value="{{ value }}" class="ui-input {{ class }}"{% if id %} id="{{ id }}"{% endif %} />
+{%- endmacro -%}
+
+{% macro password( name, value, class, maxlength ) -%}
+<input type="password" autocomplete="off" name="{{ name }}" value="{{ value }}" class="ui-input {{ class }}"{% if maxlength %} maxlength="{{ maxlength }}"{% endif %} />
+{%- endmacro -%}
+
+{% macro submit( value, classes ) -%}
+	<input type="submit" value="{{ value }}" class="ui-submit {{ classes }}" />
+{%- endmacro -%}
+
+{% macro banbutton( link, classes ) -%}
+	<a href="{{ link|default('#') }}" class="ui-button-del {{ classes }}" onclick="return confirm('Забанить?')">X</a>
+{%- endmacro -%}
+
+{% macro restorebutton( link, classes ) -%}
+<a href="{{ link|default('#') }}" class="ui-button-restore {{ classes }}" onclick="return confirm('Восстановить?')">&rarr;</a>
+{%- endmacro -%}
+
+{% macro checkbox( name, is_checked, is_disabled ) -%}
+	<input type="checkbox" name="{{ name }}"{% if is_checked %} checked="checked"{% endif %}{% if is_disabled %} disabled="disabled"{% endif %} />
+{%- endmacro -%}
+
+{% macro textarea( name, value ) %}
+	<div class="ui-textarea">
+		<textarea name="{{ name }}">{{ value }}</textarea>
+	</div>
+{% endmacro -%}
+
+{% macro select( name, options, value, id, disabled ) %}
+<span class="ui-select">
+	<select name="{{ name }}" class="form-timer-select"{% if id %} id="{{ id}}"{% endif %}{% if disabled|default(0) %} disabled="disabled"{% endif %}>
+		{%- for i in options|keys -%}
+		<option value="{{ i }}"{% if value == i %} selected="selected"{% endif %}>{{ options[i] }}</option>
+		{%- endfor -%}
+	</select>
+</span>
+{% endmacro -%}
+
+{% macro radio( name, value, text, value_2, is_disabled ) %}
+	<label class="ui-label"><input type="radio" name="{{ name }}" value="{{ value }}"{% if value_2 == value %} checked="checked"{% endif %}{% if is_disabled %} disabled="disabled"{% endif %} /><span class="ui-radio-text">{{ text }}</span></label>
+{% endmacro -%}
+
+{% macro datepicker( name, value, class ) %}
+<span class="ui-datepicker-wrap ui-input"><input type="text" name="{{ name }}" value="{{ value|e }}" class="ui-datepicker-input{% if class %} {{ class }}{% endif %}" autocomplete="off" maxlength="10" /><span class="ui-datepicker-icon"></span></span>
+{% endmacro -%}
+
+{% macro time(name, hour, minute ) %}
+<span class="ui-select">
+	<select name="{{ name }}_hour" class="ui-timer-select">
+		{% for i in 0..23 -%}
+		<option value="{{ i }}"{% if hour==i %} selected="selected"{% endif %}>{{ i }}</option>
+		{%- endfor %}
+	</select>
+</span>&nbsp;:
+<span class="ui-select">
+	<select name="{{ name }}_minute" class="ui-timer-select">
+		{% set minutes = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'] %}
+		{% for i in minutes -%}
+		<option value="{{ i }}"{% if minute<=i and minute>i-4 %} selected="selected"{% endif %}>{{ i }}</option>
+		{%- endfor %}
+	</select>
+</span>
+{% endmacro -%}

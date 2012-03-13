@@ -1,0 +1,39 @@
+{% macro big_input( name, value, class, id ) -%}
+<input type="text" name="{{ name }}" value="{{ value }}" class="ui-biginput {{ class }}"{% if id %}id="{{id}}"{% endif %} />
+{%- endmacro -%}
+
+{% macro input( name, value, class, maxlength ) -%}
+<input type="text" name="{{ name }}" value="{{ value }}" class="ui-input {{ class|raw }}"{% if maxlength %} maxlength="{{ maxlength }}"{% endif %} />
+{%- endmacro -%}
+
+{% macro select( name, options, value, id ) -%}
+<select name="{{ name }}" class="ui-select"{% if id %} id="{{ id }}"{% endif %}>
+	{%- for key, option in options -%}
+	<option value="{{ key }}"{% if value==key %} selected="selected"{% endif %}>{{ option }}</option>
+	{%- endfor -%}
+</select>
+{%- endmacro -%}
+
+{% macro submit( value ) -%}
+<input type="submit" value="{{ value }}" class="ui-submit" />
+{%- endmacro -%}
+
+{% macro textarea( name, value ) -%}
+<textarea name="{{ name }}" class="ui-textarea">{{ value }}</textarea>
+{%- endmacro %}
+
+{% macro radio( name, value, text, checked, class ) -%}
+<label><input type="radio" name="{{ name }}" value="{{ value }}"{% if checked %} checked="checked"{% endif %} class="ui-radio {{ class }}" />{{ text }}</label>
+{%- endmacro %}
+
+{% macro link_as_button( link, text, classes, id ) -%}
+<a href="{{ link }}" class="ui-link-as-button {{ classes }}"{% if id %} id="{{ id }}"{% endif %}>{{ text }}</a>
+{%- endmacro -%}
+
+{% macro checkbox( name, checked, text, id ) -%}
+<label><input type="checkbox" name="{{ name }}" {% if checked %} checked="checked"{% endif %} class="ui-checkbox" {% if id %} id="{{ id }}"{% endif %} />{{ text|raw }}</label>
+{%- endmacro -%}
+
+{% macro remove_element( classes ) -%}
+	<a href="#" class="ui-button-del {{ classes }}">X</a>
+{%- endmacro -%}

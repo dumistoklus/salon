@@ -1,0 +1,5 @@
+_box:
+
+_404:
+    resource:
+        data: 'Orgup\DataModels\Ajax\Error404'

@@ -1,0 +1,38 @@
+html {
+	padding: 0;
+	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+	height: 100%;
+	font-size: 14px;
+    line-height: 1.4;
+}
+body, p, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+body {
+	min-height: 100%;
+}
+a img {
+	border:0;
+}
+p, h1, h2 {
+
+}
+h1 {
+    color: #000;
+    font-size: 28px;
+    font-weight: normal;
+}
+h2 {
+    font-weight: normal;
+}
+p {
+	margin-bottom: 10px;
+}
+a {
+	color: #600217;
+}
+a:hover {
+    color: #004499;
+	text-decoration: none;
+}

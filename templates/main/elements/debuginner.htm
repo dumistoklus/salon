@@ -1,0 +1,15 @@
+<table>
+	{% for log in data.get_log.log %}
+	<tr>
+		<td>{{ log.microtime }}</td>
+		<td class="debug-memory">{{ log.memory }}</td>
+		<td class="debug-memory">{{ log.memory_usage }}</td>
+		<td class="debug-message debug-line-type-{{ log.type }}">{{ log.message }}</td>
+		<td class="debug-file">{{ log.file }}</td>
+	</tr>
+	{% endfor %}
+</table>
+<div class="debug-total">Memory: {{ data.get_log.memory }}Mb
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Queries: {{ data.get_log.queriesCount }}
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total time: {{ data.get_log.totalTime }}
+</div>

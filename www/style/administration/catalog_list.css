@@ -1,0 +1,46 @@
+.li-header {
+    background-color: #EEE;
+    border-bottom: 1px solid #999;
+    padding: 8px 10px;
+    overflow: hidden;
+}
+.li {
+    background-color: #E7E7E7;
+    border-color: #CECECE;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    display: block;
+    overflow: hidden;
+    padding: 4px 10px;
+    line-height: 22px;
+}
+.li:hover {
+    background-color: #FFF7CA;
+}
+.adm-header .ui-link-as-button {
+    position: relative;
+    top:4px;
+}
+.goods-id {
+    min-height: 16px;
+    width: 40px;
+    float: left;
+}
+.goods-name {
+    width: 300px;
+    float: left;
+}
+.status-showed, .status-hidden {
+    background: url(images/sprite_icon.png);
+    float: left;
+    height: 16px;
+    margin-right: 10px;
+    margin-top: 4px;
+    width: 16px;
+}
+.status-showed {
+    background-position: 0 -460px;
+}
+.status-hidden {
+    background-position: 0 -476px;
+}

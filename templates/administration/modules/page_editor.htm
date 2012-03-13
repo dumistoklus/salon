@@ -1,0 +1,51 @@
+{% import "administration/ui_elements.htm" as ui %}
+<div class="adm-header">
+	<a href="{{ ways.admin_custom_pages }}">{{ lang.admin.custompages.HEADER }}</a> &rarr;
+	{% if data.isCreating %}
+		{{ lang.admin.custompages.CREATING_PAGE }}
+	{% else %}
+		{{ lang.admin.custompages.EDITING_PAGE }}
+	{% endif %}
+</div>
+<form method="post" action="{{ ways.thispage }}">
+	<ul>
+
+		<li>Название страницы (<span id="kolname">255</span>)*:</li>
+		<li class="polefooter">
+		{% if not data.isCreating %}
+			<table class="w100"><tr><td>
+		{% endif %}
+		{{ ui.big_input( 'name', data.page.name, '', 'ep-name' ) }}
+		{% if not data.isCreating %}
+			</td><td style="padding: 5px 0 0 10px; width: 200px;"><a href="{{ ways.custom_page_id( data.pageId ) }}">{{ lang.admin.custompages.GO_TO_PAGE }}</a></td></tr></table>
+		{% endif %}
+		</li>
+
+		<li class="polefooter"><textarea name="content" id="editor">{{ data.page.content|e }}</textarea></li>
+
+		<li>Заголовок страницы*:</li>
+		<li class="polefooter">{{ ui.big_input( 'title', data.page.title, '', 'ep-title' ) }}</li>
+
+		<li>Ключевые слова (<span id="kolkeys">255</span>): </li>
+		<li class="polefooter">{{ ui.big_input( 'keywords', data.page.keywords, '', 'ep-keywords' ) }}</li>
+
+		<li>Описание (<span id="koldesc">255</span>):</li>
+		<li class="polefooter">{{ ui.big_input( 'description', data.page.description, '', 'ep-description' ) }}</li>
+
+	</ul>
+	<input type="hidden" name="editpage" value="1" />
+	{{ ui.submit('Cохранить') }}
+</form>
+<!-- ckeditor -->
+<script type="text/javascript">
+	CKEDITOR.replace( 'editor',{
+		skin : 'v2',
+		filebrowserImageBrowseUrl : '{{ ways.admin_ckfinder }}',
+		filebrowserImageUploadUrl : '{{ ways.admin_upload_image }}',
+		contentsCss: '/style/content.css?v=1',
+		height: 400,
+		resize_maxWidth: '100%',
+		resize_minWidth: '100%'
+	});
+</script>
+<!-- /ckeditor -->

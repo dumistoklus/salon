@@ -1,0 +1,17 @@
+<div class="center" style="width:350px; overflow: hidden">
+	<form action="{{ data.ways.login }}" method="post">
+		<div class="login-form">
+			<div class="login-form-input-warp">
+				<table><tr><td class="login-form-text">{{ lang.common['LOGIN'] }}</td><td><div class="login-input"><input type="text" value="" name="login" /></div></td></tr></table>
+			</div>
+			<div class="login-form-input-warp">
+				<table><tr><td class="login-form-text">{{ lang.common['PASSWORD'] }}</td><td><div class="login-input"><input type="password" value="" name="password" /></div></td></tr></table>
+			</div>
+		</div>
+		<div class="cc login-form-social"><label class="form-chk-label"><span class="form-checkbox"><input type="checkbox" name="remember_me" /></span>{{ lang.common['REMEMBER_ME'] }}</label></div>
+		<div class="cc login-form-social"><input type="submit" value="{{ lang.common['SIGN_IN'] }}" class="form-sign-in-button" /></div>
+		<input type="hidden" name="check_login" value="1" />
+	</form>
+</div>
+
+

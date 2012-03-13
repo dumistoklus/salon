@@ -1,0 +1,13 @@
+{% if data.debug %}
+<div id="open_debug">D</div>
+<div id="debugpanel">
+	<div id="dbg-resize"></div>
+	<div id="dbg-wrapper">
+		<div id="dbg-slider">
+			<div id="dbg-inner">
+				{% include 'main/elements/debuginner.htm' %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}

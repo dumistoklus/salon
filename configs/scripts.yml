@@ -1,0 +1,47 @@
+# core
+jqueryui:
+  file: /js/jquery-ui-1.8.16.custom.min.js
+  exclude: 1
+adminjqueryui:
+  file: /js/jquery-ui-1.8.16.custom.min.admin.js
+  exclude: 1
+ckeditor:
+  file: /js/ckeditor/ckeditor.js
+  exclude: 1
+ckfinder:
+  file: /js/ckfinder/ckfinder.js
+  exclude: 1
+jquery:
+  file: /js/jquery-1.7.1.min.js
+  exclude: 1
+core:
+  file: /js/core.js
+main:
+  file: /js/main.js
+
+# another
+lightbox:
+  file: /js/jquery.lightbox-0.5.pack.js
+
+# plugins
+limit:
+  file: /js/jquery.limit.js
+jcarousel:
+  file: /js/jquery.jcarousel.min.js
+lightbox:
+  file: /js/jquery.lightbox-0.5.pack.js
+
+# modules
+mainpage:
+  file: /js/modules/mainpage.js
+goods:
+  file: /js/modules/goods.js
+
+
+# admin modules
+pageEditor:
+  file: /js/administration/pageEditor.js
+user:
+  file: /js/administration/user.js
+goods_editor:
+  file: /js/administration/goods_editor.js

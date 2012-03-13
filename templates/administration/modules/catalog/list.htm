@@ -1,0 +1,38 @@
+{% import "administration/ui_elements.htm" as ui %}
+<div class="adm-header">
+    Каталог{{ ui.button( 'add', ways.admin_catalog, 'Добавить новый каталог', 'fr' ) }}
+</div>
+<div class="ui-form-block">
+    <form action="{{ ways.thispage }}" method="post">
+        <table class="w100">
+            <tr class="ui-form-line">
+                <td class="ui-form-dd">Название каталога:</td>
+                <td>{{ ui.input( 'name', data.query.name ) }}</td>
+            </tr>
+            <tr class="ui-form-line">
+                <td class="ui-form-dd">Входит в каталог:</td>
+                <td>{{ ui.select( 'parent', data.catsAsKeyValue, data.query.parent ) }}</td>
+            </tr>
+            <tr class="ui-form-line">
+                <td></td>
+                <td>{% if data.isEditing %}{{ ui.submit( 'Изменить' ) }}{% else %}{{ ui.submit( 'Добавить' ) }}{% endif %}</td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{% if data.catalog[0] %}
+<ul class="catalog">
+{{ _self.crender_catalog( data.catalog, ui, ways, 0, 0 ) }}
+</ul>
+{% endif %}
+
+{% macro crender_catalog( catalog, ui, ways, parent, level ) %}
+    {% set padding = 25 * level %}
+    {% for cat in catalog[parent] %}
+        <li{% if parent %} style="padding-left: {{ padding }}px;"{% endif %} class="li"><a href="{{ ways.admin_edit_catalog( cat.cat_id ) }}">{{ cat.name }}</a>{{ ui.deletebutton( ways.admin_remove_catalog( cat.cat_id ) ) }}</li>
+        {% if catalog[cat.cat_id] %}
+        {{ _self.crender_catalog( catalog, ui, ways, cat.cat_id, level + 1 ) }}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

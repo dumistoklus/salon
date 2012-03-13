@@ -1,0 +1,13 @@
+{% import "administration/ui_elements.htm" as ui %}
+<div class="adm-header">
+    Товары{{ ui.button( 'add', ways.admin_new_goods, 'Добавить новый товар', 'fr' ) }}
+</div>
+<ul class="catalog">
+    <li class="li-header"><div class="goods-id"></div><div class="goods-name">Название</div><div class="goods-name">Категория</div></li>
+    {% for goods in data.goods %}
+    <li class="li"><div class="goods-id">{{ goods.id }}</div><div class="goods-name"><a href="{{ ways.admin_goods_edit( goods.id ) }}">{{ goods.name }}</a></div><div class="goods-name">{{ goods.cat_name }}</div><div class="goods-name">{{ goods.fabrika_name }}</div>{{ ui.deletebutton( ways.admin_remove_goods( goods.id ) ) }}</li>
+    {% else %}
+    <li>Нет ни одного товара</li>
+    {% endfor %}
+</ul>
+{% include 'main/elements/paginator.htm' %}

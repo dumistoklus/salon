@@ -1,0 +1,7 @@
+{% if data.get_errors %}
+	{% for error in data.get_errors %}
+		<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction(2, '', '{{ error }}');</script>
+	{% endfor %}
+{% else %}
+	<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction(2, '{{ data.getName }}', '');</script>
+{% endif %}

@@ -1,0 +1,23 @@
+{% if data.paginator %}
+	 <div class="altpagenav">
+	{% if data.paginator.start_range - 1 == 1 %}
+		<a href="{{ ways.add('p', 1 ) }}" class="pgn-alt-link">1</a>
+	{% elseif data.paginator.start_range - 1 >= 2 %}
+		<a href="{{ ways.add('p', data.paginator.start_range - 1 ) }}" class="pgn-alt-link"><b>...</b></a>
+	{% endif %}
+
+	{% for i in data.paginator.start_range..data.paginator.end_range %}
+		{% if i == data.paginator.currentpage %}
+			<span class="pgn-alt-current">{{ i }}</span>
+		{% else %}
+			<a href="{{ ways.add( 'p', i ) }}" class="pgn-alt-link">{{ i }}</a>
+		{% endif %}
+	{% endfor %}
+
+	{% if data.paginator.end_range + 1 == data.paginator.numpages %}
+		<a href="{{ ways.add('p', data.paginator.end_range + 1 ) }}" class="pgn-alt-link">{{ data.paginator.end_range + 1 }}</a>
+	{% elseif data.paginator.end_range + 1 < data.paginator.numpages  %}
+		<a href="{{ ways.add('p', data.paginator.end_range + 1 ) }}" class="pgn-alt-link"><b>...</b></a>
+	{% endif %}
+	</div>
+{% endif %}

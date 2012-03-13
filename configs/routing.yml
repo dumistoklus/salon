@@ -1,0 +1,208 @@
+_mainpage:
+    path: /
+    resource:
+        module: 'Orgup\Modules\Index\Mainpage'
+        data: 'Orgup\DataModels\Index\Mainpage'
+        templates:
+            main: 'modules/mainpage.htm'
+
+_login:
+    resource:
+        module: 'Orgup\Modules\Index\Login'
+        templates:
+            main: 'modules/login.htm'
+
+_catalog:
+    pattern: cat(\d+)
+    resource:
+        module: 'Orgup\Modules\Index\Catalog'
+        data: 'Orgup\DataModels\Index\Catalog'
+        templates:
+            main: 'modules/catalog.htm'
+
+_goods:
+    pattern: g(\d+)
+    resource:
+        module: 'Orgup\Modules\Index\Goods'
+        data: 'Orgup\DataModels\Index\Goods'
+        templates:
+            main: 'modules/goods.htm'
+
+_page:
+    extends: '_404'
+    submodules:
+        _custom_page:
+            pattern: (\d+)
+            resource:
+                module: 'Orgup\Modules\Index\Page'
+                data: 'Orgup\DataModels\Index\Page'
+                templates:
+                    main: 'modules/page.htm'
+
+_administration:
+    rulesname: 'administration'
+    resource:
+        module: 'Orgup\Modules\Index\Administration\AdminMainPage'
+        data: 'Orgup\DataModels\Index\Administration\AdminMainPage'
+        templates:
+            header: 'administration/header.htm'
+            main: 'administration/modules/mainpage.htm'
+            footer: 'administration/footer.htm'
+    submodules:
+
+        _pages:
+            rulesname: 'pages'
+            extends: '_administration'
+            resource:
+                module: 'Orgup\Modules\Index\Administration\PageList'
+                data: 'Orgup\DataModels\Index\Administration\PageList'
+                templates:
+                    main: 'administration/modules/pageslist.htm'
+            submodules:
+
+                _newpage:
+                    rulesname: 'pages'
+                    extends: '_administration'
+                    resource:
+                        module: 'Orgup\Modules\Index\Administration\PageCreate'
+                        data: 'Orgup\DataModels\Index\Administration\PageEditor'
+                        templates:
+                            main: 'administration/modules/page_editor.htm'
+
+                _pagesnum:
+                    pattern: (\d+)
+                    rulesname: 'pages'
+                    extends: '_administration'
+                    resource:
+                        module: 'Orgup\Modules\Index\Administration\PageEdit'
+                        data: 'Orgup\DataModels\Index\Administration\PageEditor'
+                        templates:
+                            main: 'administration/modules/page_editor.htm'
+
+        _users:
+            rulesname: 'users'
+            extends: '_administration'
+            resource:
+                module: 'Orgup\Modules\Index\Administration\Users\Users'
+                data: 'Orgup\DataModels\Index\Administration\Users\Users'
+                templates:
+                    main: 'administration/modules/users/users.htm'
+            submodules:
+
+                _new:
+                    rulesname: 'users'
+                    extends: '_administration'
+                    resource:
+                        module: 'Orgup\Modules\Index\Administration\Users\NewUser'
+                        data: 'Orgup\DataModels\Index\Administration\Users\NewUser'
+                        templates:
+                            main: 'administration/modules/users/new_user.htm'
+                _user_info:
+                    pattern: (\d+)
+                    rulesname: 'users'
+                    extends: '_administration'
+                    resource:
+                        module: 'Orgup\Modules\Index\Administration\Users\UserInfo'
+                        data: 'Orgup\DataModels\Index\Administration\Users\UserInfo'
+                        templates:
+                            main: 'administration/modules/users/user_info.htm'
+                    submodules:
+
+                        _rules:
+                            rulesname: 'rules'
+                            extends: '_administration'
+                            resource:
+                                module: 'Orgup\Modules\Index\Administration\Users\Rules'
+                                data: 'Orgup\DataModels\Index\Administration\Users\Rules'
+                                templates:
+                                    main: 'administration/modules/users/rules.htm'
+
+        _upload:
+            rulesname: 'pages'
+            resource:
+                module: 'Orgup\Modules\Index\Administration\Upload'
+                data: 'Orgup\DataModels\Index\Administration\Upload'
+                templates:
+                    header: 'null.htm'
+                    main: 'administration/modules/upload.htm'
+                    footer: 'null.htm'
+        _ckfinder:
+            rulesname: 'pages'
+            resource:
+                templates:
+                    header: 'null.htm'
+                    main: 'administration/modules/ckfinder.htm'
+                    footer: 'null.htm'
+        _connector:
+            rulesname: 'pages'
+            resource:
+                module: 'Orgup\Modules\Index\Administration\Connector'
+                data: 'Orgup\DataModels\Index\Administration\Connector'
+                templates:
+                    header: 'null.htm'
+                    main: 'administration/modules/connector.htm'
+                    footer: 'null.htm'
+
+        _site:
+            extends: '_administration'
+            rulesname: 'system'
+            resource:
+                module: 'Orgup\Modules\Index\Administration\Site'
+                data: 'Orgup\DataModels\Index\Administration\Site'
+                templates:
+                    main: 'administration/modules/site.htm'
+
+        _catalog:
+            extends: '_administration'
+            rulesname: 'catalog'
+            resource:
+                module: 'Orgup\Modules\Index\Administration\Catalog\CatalogList'
+                data: 'Orgup\DataModels\Index\Administration\Catalog\CatalogList'
+                templates:
+                    main: 'administration/modules/catalog/list.htm'
+        _goods:
+            extends: '_administration'
+            rulesname: 'catalog'
+            resource:
+                module: 'Orgup\Modules\Index\Administration\Catalog\Goods'
+                data: 'Orgup\DataModels\Index\Administration\Catalog\Goods'
+                templates:
+                    main: 'administration/modules/catalog/goods.htm'
+            submodules:
+                _new:
+                    extends: '_administration'
+                    rulesname: 'catalog'
+                    resource:
+                        module: 'Orgup\Modules\Index\Administration\Catalog\NewGoods'
+                        data: 'Orgup\DataModels\Index\Administration\Catalog\GoodsEditor'
+                        templates:
+                            main: 'administration/modules/catalog/goods_editor.htm'
+                _edit_goods:
+                    extends: '_administration'
+                    rulesname: 'catalog'
+                    pattern: (\d+)
+                    resource:
+                        module: 'Orgup\Modules\Index\Administration\Catalog\EditGoods'
+                        data: 'Orgup\DataModels\Index\Administration\Catalog\GoodsEditor'
+                        templates:
+                            main: 'administration/modules/catalog/goods_editor.htm'
+        _fabriki:
+            extends: '_administration'
+            rulesname: 'catalog'
+            resource:
+                module: 'Orgup\Modules\Index\Administration\Fabriki'
+                data: 'Orgup\DataModels\Index\Administration\Fabriki'
+                templates:
+                    main: 'administration/modules/fabriki.htm'
+_404:
+    resource:
+        module: 'Orgup\Modules\Index\Error404'
+        templates:
+            header: 'errors/error_header.htm'
+            main: 'errors/404.htm'
+            footer: 'errors/error_footer.htm'
+
+_0nothaverights:
+    resource:
+        templates:
+            main: 'errors/nothaverights.htm'

@@ -1,0 +1,51 @@
+#hleb {
+    font-size: 24px;
+    padding-bottom: 20px;
+}
+#cats {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px dotted #888;
+}
+.cat {
+    float: left;
+    width: 230px;
+    min-height: 200px;
+    text-align: center;
+    margin-right: 20px;
+    margin-bottom:40px;
+}
+.good {
+    padding-bottom:60px;
+    padding-right: 30px;
+    text-align: center;
+    min-height: 200px;
+    width: 240px;
+}
+.cat-header {
+    font-size: 20px;
+}
+.cat-header a {
+    font-family: Times New Roman, serif;
+}
+#cats-header {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom:20px;
+}
+.cat-link {
+    font-size: 0;
+    text-decoration: none !important;
+}
+.no-photo {
+    font-size: 22px;
+    padding-top: 40px;
+    height: 80px;
+    color: #444;
+    background-color: #ccc;
+    display: block;
+}
+.goods-price {
+    text-align: center;
+    font-size: 24px;
+}

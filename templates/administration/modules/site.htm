@@ -1,0 +1,28 @@
+{% import 'administration/ui_elements.htm' as ui %}
+<div class="adm-header">
+	{{ lang.admin.site.HEADER }}
+</div>
+<table><tr>
+	<td style="padding-bottom: 5px;">
+		<form action="{{ ways.thispage }}" method="post">
+			<input type="hidden" name="reload_styles" value="1" />
+			{{ ui.submit( lang.admin.site.RELOAD_STYLES ) }}
+		</form>
+	</td>
+	<td style="padding-left: 10px;padding-bottom: 5px;">
+		<form action="{{ ways.thispage }}" method="post">
+			<input type="hidden" name="reload_scripts" value="1" />
+			{{ ui.submit( lang.admin.site.RELOAD_SCRIPTS ) }}
+		</form>
+	</td>
+	<td style="padding-left: 10px;padding-bottom: 5px;">
+		<form action="{{ ways.thispage }}" method="post">
+			<input type="hidden" name="flush_twig" value="1" />
+			{{ ui.submit( lang.admin.site.FLUSH_TWIG ) }}
+		</form>
+	</td>
+</tr>
+<tr>
+	<td class="cc">{{ lang.admin.site.LAST_UPDATE }}:<br />{% if data.stylesLastUpdateDate %}{{ data.stylesLastUpdateDate|date('j F Y H:i') }}{% else %}{{ lang.admin.site.NOTHING }}{% endif %}</td>
+	<td class="cc">{{ lang.admin.site.LAST_UPDATE }}:<br />{% if data.scriptsLastUpdateDate %}{{ data.scriptsLastUpdateDate|date('j F Y H:i') }}{% else %}{{ lang.admin.site.NOTHING }}{% endif %}</td>
+</tr></table>

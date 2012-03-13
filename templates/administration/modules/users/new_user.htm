@@ -1,0 +1,34 @@
+{% import 'administration/ui_elements.htm' as ui %}
+<div class="adm-header">
+	<a href="{{ ways.admin_users_list() }}">{{ lang.admin.users.HEADER  }}</a> &rarr; {{ lang.admin.users.NEW_USER }}
+</div>
+<div class="ui-form-block">
+   <form method="post" action="{{ ways.thispage }}">
+       <input type="hidden" name="editing" value="1" />
+       <table id="nexus-terms">
+           <tr class="ui-form-line">
+              <td class="ui-form-dd">{{ lang.admin.users.USER_NAME|raw }}:*</td>
+              <td>{{ ui.input('name', data.getName ) }}</td>
+           </tr>
+           <tr class="ui-form-line">
+              <td class="ui-form-dd">{{ lang.admin.users.USER_PASSWORD|raw }}:*</td>
+              <td>{{ ui.password('password', data.getPassword) }}</td>
+           </tr>
+           <tr class="ui-form-line">
+              <td class="ui-form-dd">{{ lang.admin.users.RE_PASSWORD|raw }}:*</td>
+              <td>{{ ui.password('re_password', data.getRePassword) }}</td>
+           </tr>
+           <tr class="ui-form-line">
+              <td class="ui-form-dd">{{ lang.admin.users.EMAIL|raw }}:</td>
+              <td>{{ ui.input('email', data.getEMail ) }}</td>
+           </tr>
+           <tr class="ui-form-line">
+               <td class="ui-form-dd"></td>
+               <td><label>{{ ui.checkbox('send_email', data.getSendEmail ) }} {{ lang.admin.users.SEND_EMAIL|raw }}</label></td>
+           </tr>
+           <tr class="ui-form-line">
+              <td></td><td>{{ ui.submit(lang.admin.users.CREATE_USER) }}</td>
+           </tr>
+       </table>
+   </form>
+</div>

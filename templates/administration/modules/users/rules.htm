@@ -1,0 +1,20 @@
+{% import 'administration/ui_elements.htm' as ui %}
+<div class="adm-header">
+    <a href="{{ ways.admin_users_list }}">{{ lang.admin.users.HEADER }}</a> &rarr; <a href="{{ ways.admin_user( data.userId ) }}">{{ lang.admin.user.USER|raw }} &laquo;{{ data.username }}&raquo;</a> &rarr; {{ lang.admin.rules.HEADER }}
+</div>
+<form action="{{ ways.thispage }}" method="post">
+	<ul class="rules-list">
+		<li class="rules-list-header"><span class="rules-list-checkbox">&nbsp;</span><span>{{ lang.admin.rules.RULE_NAME }}</span></li>
+		{% for rule_name, is_checked in data.ruleslist %}
+		<li class="rules-list-body">
+			<label>
+				<span class="rules-list-checkbox">{{ ui.checkbox( rule_name, is_checked ) }}</span>
+				<span>{% if lang.admin.rules.rulesname[rule_name] %}{{ lang.admin.rules.rulesname[rule_name] }}{% else %}{{ rule_name }}{% endif %}</span>
+			</label>
+		</li>
+		{% endfor %}
+	</ul>
+	{{ ui.submit( lang.admin.rules.SAVE_RULES ) }}
+	{{ ui.link_as_button( ways.admin_user( data.userId ), lang.admin.rules.DONT_CHANGE ) }}
+	<input type="hidden" name="rules_changed" value="1" />
+</form>

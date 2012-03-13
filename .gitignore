@@ -1,0 +1,11 @@
+.idea/
+main.yml
+scriptsversion.yml
+stylesversion.yml
+union.css
+union.js
+posters/
+backgrounds/
+avatars/
+twig_tmp/
+MongoDBLoader.php

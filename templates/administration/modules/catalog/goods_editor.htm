@@ -1,0 +1,67 @@
+{% import "administration/ui_elements.htm" as ui %}
+<div class="adm-header">
+    <a href="{{ ways.admin_goods }}">Товары</a> &rarr; {% if data.isCreating %}Создание товара{% else %}Редактирование товара &laquo;{{ data.goods.name }}&raquo;{% endif %}
+    {{ ui.button( 'add', ways.admin_new_goods, 'Добавить новый товар', 'fr' ) }}
+</div>
+<form action="{{ ways.thispage }}" method="post" enctype="multipart/form-data">
+    <table class="w100">
+        <tr>
+            <td class="goods-photo">
+                {% if data.images[0] %}
+                <img src="{{ data.getMiddleImagePath( data.images[0].file )|raw }}" alt="" />
+                <div class="goods-images">
+                    {% for image in data.images %}
+                        {% spaceless %}
+                        <a href="{{ ways.admin_delete_image( data.getId, image.id ) }}" class="goods-image{% if loop.first %} goods-selected-image{% endif %}">
+                            <img src="{{ data.getSmallImagePath( image.file )|raw }}" alt="" />
+                            <span class="goods-del-photo">X</span>
+                        </a>
+                       {% endspaceless %}
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="no-image">нет фото</div>
+                {% endif %}
+                <div id="goods-files">
+                    <div class="goods-file-input">
+                        <input type="file" name="image[0]" />
+                    </div>
+                </div>
+                <div>
+                    <a href="#" id="goods-add-image">добавить еще файл</a>
+                </div>
+            </td>
+            <td style="padding-left: 20px;">
+                <table class="w100">
+                    <tr>
+                        <td class="goods-left-td">Категория:*</td>
+                        <td>{{ ui.select('cat_id', data.cats, data.goods.cat_id ) }}</td>
+                    </tr>
+                    <tr>
+                        <td class="goods-left-td">Фабрика:*</td>
+                        <td>{{ ui.select('fabrika_id', data.fabriki, data.goods.fabrika_id ) }}</td>
+                    </tr>
+                    <tr>
+                        <td class="goods-left-td">Название:*</td>
+                        <td>{{ ui.input('name', data.goods.name, 'w100' ) }}</td>
+                    </tr>
+                    <tr>
+                        <td class="goods-left-td">Цена:</td>
+                        {% if data.goods.price == '0' %}
+                            {% set price = '' %}
+                        {% else %}
+                            {% set price = data.goods.price %}
+                        {% endif %}
+                        <td>{{ ui.input('price', price ) }} рублей</td>
+                    </tr>
+                    <tr>
+                        <td class="goods-left-td">Описание:</td>
+                        <td>{{ ui.textarea('description', data.goods.description ) }}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" name="posted" value="1" />
+    <div style="padding-left: 420px; padding-top: 30px;">{{ ui.submit( 'Сохранить' ) }}</div>
+</form>

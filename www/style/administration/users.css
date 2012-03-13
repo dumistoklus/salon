@@ -1,0 +1,12 @@
+.users-list-header td, .users-list-body td {
+    padding: 5px 10px;
+    vertical-align: middle;
+}
+.users-list-header td {
+    font-size: 14px;
+    border-bottom: 1px solid #999;
+    background-color: #eee
+}
+.users-list-body td {
+    border-bottom: 1px solid #999;
+}

@@ -1,0 +1,27 @@
+<div id="hleb">
+    {% for hleb in data.hleb %}
+    <a href="{{ ways.catalog( hleb.cat_id ) }}">{{ hleb.name }}</a>
+    {% if not loop.last %}
+     &rarr;
+    {% endif %}
+    {% endfor %}
+</div>
+<table>
+    <tr>
+        <td class="goods-image">
+            <a href="{{ data.big_image() }}" class="photo-image"><img src="{{ data.image() }}" alt="" /></a>
+        </td>
+        <td class="item-description">
+            <h2>{{ data.goods.name }}</h2>
+            <div>Стоимость: {% if data.goods.price %}<span class="price">{{ data.goods.price }}</span> руб.{% else %}зависит от поставки. уточняйте по телефону{% endif %}</div>
+            {% if data.goods.fabrika_id != 1 %}
+                <div>Фабрика: {{ data.goods.fabrika_name }}</div>
+            {% endif %}
+            <div class="discl">Чтобы заказать этот товар позвоните нам по телефону в Казани 8 (962) 559-20-10 </div>
+            <!-- <a href="#" class="order_button">Заказать</a> -->
+        </td>
+    </tr>
+</table>
+<div id="goods-description">
+{{ data.goods.description|raw }}
+</div>
