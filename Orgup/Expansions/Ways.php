@@ -5,8 +5,8 @@ use Orgup\Application\Registry;
 use \Orgup\Application\Logger;
 
 interface WaysInterface {
-    public function add( $param, $value, $path );
-    public function delete_param( $param, $path );
+    public function add( $param, $value, $path = null );
+    public function delete_param( $param, $path = null );
     public function thispage();
     /** mainpage. example http://localhost/ */
     public function path();

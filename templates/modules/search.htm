@@ -1,0 +1,52 @@
+{% import "main/elements/ui_elements.htm" as ui %}
+<div class="content-text">
+    <form action="{{ ways.search }}">
+        <div id="se">
+            <table class="w100">
+                <tr>
+                    <td>Ищем: &nbsp;</td>
+                    <td colspan="4" style="padding-bottom: 10px; padding-right: 10px;"><input type="text" class="w100" name="q" value="{{ data.query.q }}" /></td>
+                </tr>
+                <tr>
+                    <td>Фабрика: &nbsp;</td>
+                    <td>{{ ui.select( 'fabrika', data.fabriki, data.query.fabrika ) }}&nbsp;</td>
+                    <td>Страна: &nbsp;</td>
+                    <td>{{ ui.select( 'strana', data.strani, data.query.strana ) }}&nbsp;</td>
+                    <td class="tr">{{ ui.submit( 'Искать' ) }}&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    {% for item in data.results %}
+    <div class="se-item">
+        <table class="w100">
+            <tr>
+                <td class="se-image">
+                    <a href="{{ ways.goods( item.id ) }}">
+                        {% if item.image %}
+                            <img src="/images/b/{{ item.image|raw }}.{{ item.ext|raw }}" alt="" />
+                        {% else %}
+                            <span class="no-photo">Нет фото</span>
+                        {% endif %}
+                    </a>
+                </td>
+                <td>
+                    <h2><a href="{{ ways.goods( item.id ) }}">{{ item.name }}</a></h2>
+                    <table>
+                        <tr>
+                            <td>Страна: &nbsp;</td>
+                            <td>{{ item.strana }}</td>
+                        </tr>
+                        <tr>
+                            <td>Фабрика: &nbsp;</td>
+                            <td>{{ item.fabrika }}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="se-price">{% if item.price %}{{ data.beautiful_sum( item.price )|raw }}{% else %}уточняйте{% endif %}</td>
+            </tr>
+        </table>
+    </div>
+    {% endfor %}
+    {% include 'main/elements/paginator.htm' %}
+</div>

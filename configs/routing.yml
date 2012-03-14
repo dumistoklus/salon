@@ -39,6 +39,13 @@ _page:
                 templates:
                     main: 'modules/page.htm'
 
+_search:
+    resource:
+        module: 'Orgup\Modules\Index\Search'
+        data: 'Orgup\DataModels\Index\Search'
+        templates:
+            main: 'modules/search.htm'
+
 _administration:
     rulesname: 'administration'
     resource:

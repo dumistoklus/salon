@@ -18,6 +18,9 @@ catalog:
   file: /style/modules/catalog.css
 goods:
   file: /style/modules/goods.css
+search:
+  file: /style/modules/search.css
+
 
 #administration common
 administration:

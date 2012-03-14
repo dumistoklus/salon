@@ -35,14 +35,13 @@
 <body>
 <div id="main">
     <div id="header"><div id="phone">Звоните нам!<br />8 (962) 559 20 10<div id="email">info@diluso.ru</div></div>
-        <div id="logo">di Luso
+        <div id="logo">Di Luso
         <div id="podpis">Салон интерьерных решений</div>
         <div id="search-block"><form action="/" method="get">
-            <input type="text" name="q" value="" id="search-input" /><input type="submit" value="Искать" id="search-button" />
-        </form>
-            {% if data.user.check_this_right('administration') %}
+            <input type="text" name="q" value="" id="search-input" /><input type="submit" value="Искать" id="search-button" />{% if data.user.check_this_right('administration') %}
             <a href="{{ ways.adminpage }}" class="in-admin">{{ lang.common.ADMIN_PAGE|raw }}</a>
             {% endif %}
+        </form>
         </div></div>
     </div>
     <table id="table">
@@ -78,10 +77,10 @@
                     {% if data.thisIsMainPage() %}
                     <div id="mainpage">
                         <ul id="ramka">
-                            <li><a href="/images/1.jpg"><img src="images/mini1.jpg" alt="" /></a></li>
-                            <li><a href="/images/3.jpg"><img src="images/mini3.jpg" alt="" /></a></li>
-                            <li><a href="/images/4.jpg"><img src="images/mini4.jpg" alt="" /></a></li>
-                            <li><a href="/images/2.jpg"><img src="images/mini2.jpg" alt="" /></a></li>
+                            <li><a href="/images/1.jpg"><img src="/images/mini1.jpg" alt="" /></a></li>
+                            <li><a href="/images/3.jpg"><img src="/images/mini3.jpg" alt="" /></a></li>
+                            <li><a href="/images/4.jpg"><img src="/images/mini4.jpg" alt="" /></a></li>
+                            <li><a href="/images/2.jpg"><img src="/images/mini2.jpg" alt="" /></a></li>
                             <li><a href="/images/5.jpg"><img src="/images/mini5.jpg" alt="" /></a></li>
                             <li><a href="/images/6.jpg"><img src="/images/mini6.jpg" alt="" /></a></li>
                         </ul>
