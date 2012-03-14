@@ -74,6 +74,10 @@ class Ways implements WaysInterface {
         return $this->host.'g'.$id;
     }
 
+    public function search() {
+        return $this->host.'search';
+    }
+
     // адрес определенной страницы
     public function custom_page_id( $id_page ) {
         return $this->host.'page/'.$id_page;
