@@ -33,7 +33,7 @@
                 <td>
                     <h2><a href="{{ ways.goods( item.id ) }}">{{ item.name }}</a></h2>
                     <table>
-                        {% if item.country %}
+                        {% if item.country_id != 1 %}
                         <tr>
                             <td>Страна: &nbsp;</td>
                             <td>{{ item.country }}</td>
