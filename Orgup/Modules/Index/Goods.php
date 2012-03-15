@@ -23,9 +23,11 @@ class Goods extends IndexModuleBuilder {
     }
 
     private function getGoods() {
-        return $this->getDB()->fetchAssoc('SELECT goods.*, img.ext, img.image_id as image, fab.name as fabrika_name, fab.`fabrika_id` FROM goods as goods
+        return $this->getDB()->fetchAssoc('SELECT goods.*, img.ext, img.image_id as image, fab.name as fabrika_name, fab.`fabrika_id`, ct.name as country FROM goods as goods
         LEFT JOIN `fabriki` AS fab ON goods.fabrika_id = fab.fabrika_id
-        LEFT JOIN `images` AS img ON goods.id = img.id WHERE goods.id = ?', array( $this->getWayPattern(0)) );
+        LEFT JOIN `images` AS img ON goods.id = img.id 
+        LEFT JOIN `country` AS ct ON goods.country_id = ct.country_id
+        WHERE goods.id = ?', array( $this->getWayPattern(0)) );
     }
 
     public function getCats() {

@@ -42,6 +42,10 @@
                         <td>{{ ui.select('fabrika_id', data.fabriki, data.goods.fabrika_id ) }}</td>
                     </tr>
                     <tr>
+                        <td class="goods-left-td">Страна:*</td>
+                        <td>{{ ui.select('country_id', data.country, data.goods.country_id ) }}</td>
+                    </tr>
+                    <tr>
                         <td class="goods-left-td">Название:*</td>
                         <td>{{ ui.input('name', data.goods.name, 'w100' ) }}</td>
                     </tr>

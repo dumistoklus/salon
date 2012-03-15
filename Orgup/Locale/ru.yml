@@ -86,6 +86,7 @@ admin:
     catalog: 'Каталог'
     goods: 'Товары'
     fabriki: 'Фабрики'
+    country: 'Страны'
   custompages:
     HEADER: 'Страницы'
     CHANGED: 'Изменено'

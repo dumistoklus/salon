@@ -100,7 +100,8 @@ class Ways implements WaysInterface {
             'catalog' => array(
                 'catalog'               => $this->admin_catalog(),
                 'goods'                 => $this->admin_goods(),
-                'fabriki'               => $this->admin_fabriki()
+                'fabriki'               => $this->admin_fabriki(),
+                'country'               => $this->admin_country()
             )
         );
     }
@@ -216,5 +217,19 @@ class Ways implements WaysInterface {
 
     public function admin_fabriki_delete( $id ) {
         return $this->add( 'delete', $id, $this->admin_fabriki() );
+    }
+    
+    public function admin_country( $id = null ) {
+
+        $path = $this->adminpage().'country/';
+
+        if ( $id )
+            $path = $this->add( 'id', $id, $path );
+
+        return $path;
+    }
+
+    public function admin_country_delete( $id ) {
+        return $this->add( 'delete', $id, $this->admin_country() );
     }
 }

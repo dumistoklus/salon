@@ -9,3 +9,6 @@ backgrounds/
 avatars/
 twig_tmp/
 MongoDBLoader.php
+/nbproject/private/
+nbproject/project.properties
+nbproject/project.xml

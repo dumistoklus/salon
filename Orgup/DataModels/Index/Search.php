@@ -6,6 +6,7 @@ use \Orgup\DataModels\IndexData;
 class Search extends IndexData {
 
     private $_fabriki = array();
+    private $_strani = array();
     private $_query = array();
     private $_strana;
     private $_results;
@@ -16,15 +17,17 @@ class Search extends IndexData {
 
     public function fabriki() {
 
-        $arr = array(
-            '0' => 'любая'
-        );
+        $this->_fabriki[0] = 'любая';
 
-        return array_merge( $arr, $this->_fabriki );
+        return $this->_fabriki;
     }
 
     public function setFabriki( $fabriki ) {
         $this->_fabriki = $fabriki;
+    }
+    
+    public function setStrani($strani) {
+        $this->_strani = $strani;
     }
 
     public function setQuery($query)
@@ -44,12 +47,8 @@ class Search extends IndexData {
 
     public function strani()
     {
-
-        $arr = array(
-            '0' => 'любая'
-        );
-
-        return array_merge( $arr, $this->_fabriki );
+        $this->_strani[0] = 'любая';
+        return $this->_strani;
     }
 
     public function setResults($results)

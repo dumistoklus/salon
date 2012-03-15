@@ -1,0 +1,24 @@
+{% import "administration/ui_elements.htm" as ui %}
+<div class="adm-header">
+	<a href="{{ ways.admin_custom_pages }}">{{ lang.admin.custompages.HEADER }}</a> &rarr; Фабрики
+</div>
+<form action="{{ ways.admin_country( data.getFabrikaId ) }}" method="post">
+    <div class="ui-form-block">
+        <table class="w100">
+            <tr class="ui-form-line">
+                <td class="ui-form-dd">Название страны:</td>
+                <td><div class="fr">{{ ui.button( 'add', ways.admin_country, 'Добавить новую страну' ) }}</div>{{ ui.input( 'name', data.name ) }}</td>
+            </tr>
+            <tr class="ui-form-line">
+                <td></td>
+                <td>{{ ui.submit( 'Сохранить' ) }}</td>
+            </tr>
+        </table>
+    </div>
+</form>
+{% for country in data.country %}
+<div style="padding: 5px; border-bottom: 1px solid #ccc;">
+    <a href="{{ ways.admin_country( country.country_id ) }}">{{ country.name }}</a>
+    {{ ui.deletebutton( ways.admin_country_delete( country.country_id )) }}
+</div>
+{% endfor %}

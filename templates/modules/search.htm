@@ -33,14 +33,18 @@
                 <td>
                     <h2><a href="{{ ways.goods( item.id ) }}">{{ item.name }}</a></h2>
                     <table>
+                        {% if item.country %}
                         <tr>
                             <td>Страна: &nbsp;</td>
-                            <td>{{ item.strana }}</td>
+                            <td>{{ item.country }}</td>
                         </tr>
+                        {% endif %}
+                        {% if item.fabrika_id != 1 %}
                         <tr>
                             <td>Фабрика: &nbsp;</td>
-                            <td>{{ item.fabrika }}</td>
+                            <td>{{ item.fabrika_name }}</td>
                         </tr>
+                        {% endif %}
                     </table>
                 </td>
                 <td class="se-price">{% if item.price %}{{ data.beautiful_sum( item.price )|raw }}{% else %}уточняйте{% endif %}</td>

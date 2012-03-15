@@ -201,6 +201,14 @@ _administration:
                 data: 'Orgup\DataModels\Index\Administration\Fabriki'
                 templates:
                     main: 'administration/modules/fabriki.htm'
+        _country:
+            extends: '_administration'
+            rulesname: 'catalog'
+            resource:
+                module: 'Orgup\Modules\Index\Administration\Country'
+                data: 'Orgup\DataModels\Index\Administration\Country'
+                templates:
+                    main: 'administration/modules/country.htm'
 _404:
     resource:
         module: 'Orgup\Modules\Index\Error404'

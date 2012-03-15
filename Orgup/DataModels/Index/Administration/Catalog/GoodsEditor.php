@@ -22,6 +22,11 @@ class GoodsEditor extends Administration {
      * @var \Orgup\Plugins\Managers\FabrikiManager
      */
     private $FabManager;
+    
+    /**
+     * @var \Orgup\Plugins\Managers\CountryManager
+     */
+    private $CountryManager;
 
     private $_data_obtained = false;
     private $_data_no_errors = false;
@@ -184,6 +189,15 @@ class GoodsEditor extends Administration {
 
         return $this->FabManager->getFabriki();
     }
+    
+    public function country() {
+
+        if ( !$this->CountryManager ) {
+            $this->CountryManager = new \Orgup\Plugins\Managers\CountryManager();
+        }
+
+        return $this->CountryManager->getCountry();
+    }
 
     public function goods() {
         if ( is_object( $this->Goods ) ) {
@@ -231,6 +245,13 @@ class Goods extends \Orgup\Common\Mod {
      * @Validate(type="numeric")
      */
     public $fabrika_id = 1;
+    
+    /**
+     * @Post()
+     * @Trim()
+     * @Validate(type="numeric")
+     */
+    public $country_id;
 
     /**
      * @Post()
