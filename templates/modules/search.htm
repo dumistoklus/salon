@@ -47,10 +47,12 @@
                         {% endif %}
                     </table>
                 </td>
-                <td class="se-price">{% if item.price %}{{ data.beautiful_sum( item.price )|raw }}{% else %}уточняйте{% endif %}</td>
+                <td class="se-price">{% if item.price %}{{ data.beautiful_sum( item.price )|raw }}&nbsp;<small>руб</small>{% else %}уточняйте{% endif %}</td>
             </tr>
         </table>
     </div>
+    {% else %}
+    <div>Ничего не найдено</div>
     {% endfor %}
     {% include 'main/elements/paginator.htm' %}
 </div>
