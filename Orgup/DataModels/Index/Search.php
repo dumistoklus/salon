@@ -53,6 +53,7 @@ class Search extends IndexData {
 
     public function setCats($cats)
     {
+        $cats[0] = 'любая';
         $this->_cats = $cats;
     }
 

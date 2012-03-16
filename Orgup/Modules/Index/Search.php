@@ -13,7 +13,8 @@ class Search extends IndexModuleBuilder {
      */
     protected $Data;
     private $fabriki = array();
-    private $country = array();
+    private $cats = array();
+
     const GOODS_PER_PAGE = 20;
 
     public function run() {
@@ -22,21 +23,23 @@ class Search extends IndexModuleBuilder {
                 $current_page * self::GOODS_PER_PAGE - self::GOODS_PER_PAGE,
                 self::GOODS_PER_PAGE,
                 $this->Routing->route_get('q'), 
-                $this->Routing->route_get('strana'), 
+                $this->Routing->route_get('cat_id'), 
                 $this->Routing->route_get('fabrika')
                 );
         $this->Data->setResults($Searching->results());
         $query = array(
             'q'         => $this->Routing->route_get('q'),
-            'strana'    => $this->Routing->route_get('strana'),
+            'cat_id'    => $this->Routing->route_get('cat_id'),
             'fabrika'   => $this->Routing->route_get('fabrika')
         );
         
         $this->Data->add_paginator( $Searching->count(), $current_page, self::GOODS_PER_PAGE );
         $this->Data->setQuery($query);
         $this->initFabriki();
-        $this->initCountry();
-        $this->Data->setStrani($this->country);
+        $this->initCats();
+        //$this->initCountry();
+        //$this->Data->setStrani($this->country);
+        $this->Data->setCats($this->cats);
         $this->Data->setFabriki($this->fabriki);
     }
 
@@ -53,6 +56,13 @@ class Search extends IndexModuleBuilder {
             $this->country[$row['country_id']] = $row['name'];
         }
     }
+    
+    private function initCats() {
+        $query = $this->getDB()->query('SELECT  * FROM catalogs');
+        foreach ($query as $row) {
+            $this->cats[$row['cat_id']] = $row['name'];
+        }
+    } 
 
 }
 
@@ -60,18 +70,19 @@ class Searching extends DBAccess {
 
     private $string;
     private $fabrika_id;
-    private $country_id;
+    //private $country_id;
+    private $cat_id;
     private $where = '';
     private $results = array();
     private $count = 0;
 
-    public function __construct($limit, $start, $string, $country_id, $fabrika_id) {
+    public function __construct($limit, $start, $string, $cat_id, $fabrika_id) {
         $this->limit = (int)$limit;
         $this->start = (int)$start;
 
         $this->string = trim($string);
         $this->fabrika_id = (int) $fabrika_id;
-        $this->country_id = (int) $country_id;
+        $this->cat_id =(int)$cat_id;
         $this->setWhere();
         $this->initResults();
         $this->initCount();
@@ -86,7 +97,8 @@ class Searching extends DBAccess {
     }
 
     private function initResults() {
-        $sql = 'SELECT goods.*, fab.name as fabrika_name, fab.`fabrika_id`, ct.name as country FROM goods as goods
+        $sql = 'SELECT goods.*, fab.name as fabrika_name, img.image_id as image,img.ext, fab.`fabrika_id`, ct.name as country FROM goods as goods
+        LEFT JOIN `images` AS img ON goods.id = img.id
         LEFT JOIN `fabriki` AS fab ON goods.fabrika_id = fab.fabrika_id
         LEFT JOIN `country` AS ct ON goods.country_id = ct.country_id 
         ' . $this->where. ' LIMIT '.$this->limit.' , '.$this->start;
@@ -100,8 +112,6 @@ class Searching extends DBAccess {
     
     private function initCount() {
         $sql = 'SELECT COUNT(*) as c FROM goods as goods
-        LEFT JOIN `fabriki` AS fab ON goods.fabrika_id = fab.fabrika_id
-        LEFT JOIN `country` AS ct ON goods.country_id = ct.country_id 
         ' . $this->where;
         $stmt = $this->getDB()->prepare($sql);
         if ($this->string != '') {
@@ -117,8 +127,8 @@ class Searching extends DBAccess {
         $where = array();
         if ($this->fabrika_id)
             $where[] = 'goods.fabrika_id = ' . $this->fabrika_id;
-        if ($this->country_id)
-            $where[] = 'goods.country_id = ' . $this->country_id;
+        if ($this->cat_id)
+            $where[] = 'goods.cat_id = ' . $this->cat_id;
         if ($this->string != '') {
             $where[] = ' (goods.name LIKE :querystring OR goods.description LIKE :querystring)';
         }
