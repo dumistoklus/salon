@@ -15,7 +15,6 @@
             <h2>{{ data.goods.name }}</h2>
             <div>Стоимость: {% if data.goods.price %}<span class="price">{{ data.goods.price }}</span> руб.{% else %}зависит от поставки. уточняйте по телефону{% endif %}</div>
             {% if data.goods.fabrika_id != 1 %}
-                <div>Фабрика: {{ data.goods.fabrika_name }}</div>
                 <div>Фабрика: <a href="{{ ways.search }}?fabrika={{ data.goods.fabrika_id }}">{{ data.goods.fabrika_name }}</a></div>
             {% endif %}
             {% if data.goods.country_id != 1 %}

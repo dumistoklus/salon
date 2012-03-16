@@ -6,9 +6,8 @@ use \Orgup\DataModels\IndexData;
 class Search extends IndexData {
 
     private $_fabriki = array();
-    private $_strani = array();
+    private $_cats = array();
     private $_query = array();
-    private $_strana;
     private $_results;
 
     public function initStylesAndScripts() {
@@ -26,9 +25,7 @@ class Search extends IndexData {
         $this->_fabriki = $fabriki;
     }
     
-    public function setStrani($strani) {
-        $this->_strani = $strani;
-    }
+    public function setStrani($strani) {}
 
     public function setQuery($query)
     {
@@ -41,15 +38,8 @@ class Search extends IndexData {
     }
 
     public function setStrana($strana)
-    {
-        $this->_strana = $strana;
-    }
+    {}
 
-    public function strani()
-    {
-        $this->_strani[0] = 'любая';
-        return $this->_strani;
-    }
 
     public function setResults($results)
     {
@@ -59,5 +49,15 @@ class Search extends IndexData {
     public function getResults()
     {
         return $this->_results;
+    }
+
+    public function setCats($cats)
+    {
+        $this->_cats = $cats;
+    }
+
+    public function getCats()
+    {
+        return $this->_cats;
     }
 }

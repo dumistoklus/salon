@@ -5,13 +5,13 @@
             <table class="w100">
                 <tr>
                     <td>Ищем: &nbsp;</td>
-                    <td colspan="4" style="padding-bottom: 10px; padding-right: 10px;"><input type="text" class="w100" name="q" value="{{ data.query.q }}" /></td>
+                    <td colspan="6" style="padding-bottom: 10px; padding-right: 10px;"><input type="text" class="w100" name="q" value="{{ data.query.q }}" /></td>
                 </tr>
                 <tr>
                     <td>Фабрика: &nbsp;</td>
                     <td>{{ ui.select( 'fabrika', data.fabriki, data.query.fabrika ) }}&nbsp;</td>
-                    <td>Страна: &nbsp;</td>
-                    <td>{{ ui.select( 'strana', data.strani, data.query.strana ) }}&nbsp;</td>
+                    <td>Категория: &nbsp;</td>
+                    <td>{{ ui.select( 'cat_id', data.cats, data.query.cat_id ) }}&nbsp;</td>
                     <td class="tr">{{ ui.submit( 'Искать' ) }}&nbsp;</td>
                 </tr>
             </table>
@@ -33,13 +33,13 @@
                 <td>
                     <h2><a href="{{ ways.goods( item.id ) }}">{{ item.name }}</a></h2>
                     <table>
-                        {% if item.country_id != 1 %}
+                        {% if item.country_id != 1 and item.country_id %}
                         <tr>
                             <td>Страна: &nbsp;</td>
                             <td>{{ item.country }}</td>
                         </tr>
                         {% endif %}
-                        {% if item.fabrika_id != 1 %}
+                        {% if item.fabrika_id != 1 and item.fabrika_id %}
                         <tr>
                             <td>Фабрика: &nbsp;</td>
                             <td>{{ item.fabrika_name }}</td>
