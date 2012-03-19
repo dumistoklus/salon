@@ -100,8 +100,8 @@ class GoodsEditor extends Administration {
 
                     $ResizeImage = new \Orgup\Plugins\File\ResizeImage();
                     $ResizeImage->resizeimg( $path_to_originals.$UploadImage->getFullName(), $path_to_big.$UploadImage->getFullName(), 400, 400 );
-                    $ResizeImage->resizeimg( $path_to_originals.$UploadImage->getFullName(), $path_to_middle.$UploadImage->getFullName(), 200, 200 );
-                    $ResizeImage->resizeimg( $path_to_middle.$UploadImage->getFullName(), $path_to_small.$UploadImage->getFullName(), 100, 100 );
+                    $ResizeImage->resizeimg( $path_to_originals.$UploadImage->getFullName(), $path_to_middle.$UploadImage->getFullName(), 200, 200,true );
+                    $ResizeImage->resizeimg( $path_to_middle.$UploadImage->getFullName(), $path_to_small.$UploadImage->getFullName(), 100, 100, true );
                 }
             }
         }
