@@ -1,5 +1,5 @@
 common:
-  SITENAME: 'Салон DiLuso'
+  SITENAME: 'Салон DiLusso'
   ADMIN_SITENAME: 'Админка'
   SIGN_IN: 'Войти'
   SIGN_UP: 'Зарегистрироваться'
