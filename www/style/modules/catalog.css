@@ -8,8 +8,7 @@
     border-bottom: 1px dotted #888;
 }
 .cat {
-    float: left;
-    width: 230px;
+    min-width: 230px;
     min-height: 200px;
     text-align: center;
     margin-right: 20px;
@@ -45,6 +44,8 @@
     color: #444;
     background-color: #ddd;
     display: block;
+    max-width: 200px;
+    margin: 0 auto;
 }
 .goods-price {
     text-align: center;

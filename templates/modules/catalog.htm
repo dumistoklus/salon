@@ -10,26 +10,33 @@
     </div>
 {% endif %}
 {% if data.get_main_menu[data.mainCat] %}
-    <div id="cats">
+    <table class="w100" id="cats">
+        <tr>
         {% for cat in data.getCatalog[data.mainCat] %}
-        <div class="cat">
+        {% if loop.index0 % 3 == 0 and loop.index0 != 0 %}
+        </tr><tr>
+        {% endif %}
+        <td class="cat">
             <div class="cat-header"><a href="{{ ways.catalog( cat.cat_id ) }}">{{ cat.name }}</a></div>
             <a href="{{ ways.catalog( cat.cat_id ) }}" class="cat-link">
                 {% if cat.image_id %}
-                <img src="{{ data.image_path( cat.image_id, cat.ext ) }}" alt="" class="photo-image" />
+                <img src="{{ data.image_path( cat.image_id, cat.ext ) }}" alt="" />
                 {% else %}
                 <span class="no-photo">Нет фото</span>
                 {% endif %}
             </a>
-        </div>
+        </td>
         {% endfor %}
-        <div style="clear: both;"></div>
-    </div>
+        </tr>
+    </table>
 {% endif %}
 {% if data.goods %}
 <table id="goods">
     <tr>
     {% for goods in data.goods %}
+    {% if loop.index0 % 3 == 0 and loop.index0 != 0 %}
+    </tr><tr>
+    {% endif %}
     <td class="good">
         <a href="{{ ways.goods( goods.id ) }}" class="cat-link">
             {% if goods.image_id %}
@@ -43,9 +50,6 @@
         <div class="goods-price">{{ data.beautiful_sum( goods.price )|raw }} рублей</div>
         {% endif %}
     </td>
-    {% if loop.index % 3 == 0 %}
-        </tr><tr>
-    {% endif %}
     {% endfor %}
     </tr>
 </table>
