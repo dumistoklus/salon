@@ -29,6 +29,6 @@ class Catalog extends IndexModuleBuilder {
     }
 
     public function getGoods( $cat_id ) {
-        return $this->getDB()->fetchAll('SELECT goods.*, img.image_id, img.ext FROM `goods` as goods INNER JOIN `images` AS img USING(id) WHERE `cat_id` = ?  ORDER BY `id`', array( $cat_id ) );
+        return $this->getDB()->fetchAll('SELECT goods.*, img.image_id, img.ext FROM `goods` as goods LEFT JOIN `images` AS img USING(id) WHERE goods.`cat_id` = ? GROUP BY goods.id ORDER BY goods.`name`', array( $cat_id ) );
     }
 }

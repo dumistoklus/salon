@@ -9,6 +9,7 @@ class Goods extends IndexData {
     private $catalog;
     private $catalog_key_value;
     private $hleb;
+    private $_images;
 
     public function initStylesAndScripts() {
         $this->add_style('goods');
@@ -61,5 +62,15 @@ class Goods extends IndexData {
     public function getHleb()
     {
         return $this->hleb;
+    }
+
+    public function setImages($images)
+    {
+        $this->_images = $images;
+    }
+
+    public function getImages()
+    {
+        return $this->_images;
     }
 }

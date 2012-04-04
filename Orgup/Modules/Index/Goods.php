@@ -17,6 +17,7 @@ class Goods extends IndexModuleBuilder {
         if ( $goods ) {
             $this->Data->setGoods( $goods );
             $this->Data->setCats( $this->getCats() );
+            $this->Data->setImages( $this->getImages() );
         } else {
             throw new E404;
         }
@@ -28,6 +29,10 @@ class Goods extends IndexModuleBuilder {
         LEFT JOIN `images` AS img ON goods.id = img.id 
         LEFT JOIN `country` AS ct ON goods.country_id = ct.country_id
         WHERE goods.id = ?', array( $this->getWayPattern(0)) );
+    }
+
+    private function getImages() {
+        return $this->getDB()->fetchAll('SELECT * FROM `images` WHERE id = ?', array( $this->getWayPattern(0)) );
     }
 
     public function getCats() {

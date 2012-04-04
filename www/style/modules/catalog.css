@@ -21,6 +21,7 @@
     text-align: center;
     min-height: 200px;
     width: 240px;
+    vertical-align: middle;
 }
 .cat-header {
     font-size: 20px;

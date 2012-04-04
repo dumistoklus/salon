@@ -55,3 +55,19 @@ h2 {
 .discl {
     padding-top: 20px;
 }
+#goods-images {
+    padding-top: 20px;
+}
+.goods-images-link {
+    display: inline-block;
+    //zoom: 1;
+    //display: inline;
+    margin-right:10px;
+}
+.goods-images-img {
+    vertical-align: middle;
+    border: 3px solid orange;
+}
+.goods-images-img:hover {
+    border-color: #600217;
+}

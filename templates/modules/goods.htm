@@ -10,6 +10,11 @@
     <tr>
         <td class="goods-image">
             <a href="{{ data.big_image() }}" class="photo-image"><img src="{{ data.image() }}" alt="" /></a>
+            <div id="goods-images">
+                {% for image in data.getImages %}
+                <a href="/images/o/{{ image.image_id|raw }}.{{ image.ext|raw }}" class="goods-images-link"><img src="/images/s/{{ image.image_id|raw }}.{{ image.ext|raw }}" alt="" class="goods-images-img" /></a>
+                {% endfor %}
+            </div>
         </td>
         <td class="item-description">
             <h2>{{ data.goods.name }}</h2>
